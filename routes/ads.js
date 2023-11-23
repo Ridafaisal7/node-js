@@ -5,7 +5,7 @@ const verifyToken = require('../middleware/verifyToken')
 
 router.get('/', async (req, res) => {
     try{
-        const ads = await Ads.find({}).limit(15)
+        const ads = await Ads.find({}).limit(16)
     res.send({
        data: ads
     })
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
 //middleware: API or us k function k darmiyab moi additional kaam krna ho tw middleware k zarye krwayngy
 
-router.post('/addData', verifyToken, async (req, res) => {
+router.post('/addData', async (req, res) => {
     try{
         const ad = new Ads(req.body)
         await ad.save()
